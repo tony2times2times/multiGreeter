@@ -4,10 +4,9 @@
 //Test for Assignment 1 
 //https://github.com/tony2times2times/multiGreeter
 
-package MultiGreeter.tests;
+package edu.metrostate.ics240.p1.trp065;
 
 import java.util.Arrays;
-import MultiGreeter.MultiGreeter;
 
 public class MultiGreeterTest {
 
@@ -26,7 +25,7 @@ public class MultiGreeterTest {
 		//Test adding greetings to the array.
 		hello.addGreeting("konichiwa");
 		//test the greet Methods both with and without arguments 
-		if (!hello.greet().equals("konichiwa World") || !hello.greet("me").equals("konichiwa me")) {
+		if (!hello.greet().equals("konichiwa, World!") || !hello.greet("me").equals("konichiwa, me!")) {
 			fubar = true;
 			System.out.println("Unexpected result found in hello.addGreeting('konichiwa')");
 		}
@@ -36,20 +35,19 @@ public class MultiGreeterTest {
 		//Set tester to a no arguments greeting.
 		String tester = hello.greet();
 		//Make sure tester is one of the two added greetings and that there are only two greetings.
-		if (!(tester.equals("konichiwa World") || tester.equals("ohayo gozaimasu World"))
+		if (!(tester.equals("konichiwa, World!") || tester.equals("ohayo gozaimasu, World!"))
 				|| hello.getNumGreetings() != 2) {
 			fubar = true;
 			System.out.println("Unexpected result found in hello.addGreeting('ohayo gozaimasu')");
 		}
 		
 		//Test creating a MultiGreeter with an array size of 2
-		MultiGreeter goodbye = new MultiGreeter(0);
+		MultiGreeter goodbye = new MultiGreeter(2);
 		goodbye.addGreeting("sayonara");
 		goodbye.addGreeting("jaa ne");
 		//Convert the array to a string so the results can be tested.
 		String goodbyeString = Arrays.toString(goodbye.getGreetings());
-		System.out.println(goodbyeString);
-		//Compare goodbyeString to the expected output.
+		//Compare goodbyeString to the expected output. This tests the getGreetings method.
 		if (!goodbyeString.equals("[sayonara, jaa ne]")) {
 			fubar = true;
 			System.out.println("Unexpected result found in goodbye.getGreetings()");
